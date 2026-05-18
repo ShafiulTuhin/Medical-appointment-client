@@ -133,14 +133,15 @@ const Navbar = () => {
           <li className={`${border}`}>
             <NavLink href="/appointment">All Appointments</NavLink>
           </li>
-
-          <li className={`${border}`}>
-            <NavLink href="/dashboard">Dashboard</NavLink>
-          </li>
+          {user && (
+            <li className={`${border}`}>
+              <NavLink href="/dashboard">Dashboard</NavLink>
+            </li>
+          )}
         </ul>
 
         <div className="">
-          {/* {isPending ? (
+          {isPending ? (
             <span className="flex justify-center items-center">Loading...</span>
           ) : user ? (
             <div className="flex flex-col gap-3">
@@ -165,20 +166,20 @@ const Navbar = () => {
                 Logout
               </button>
             </div>
-          ) : ( */}
-          <div className="flex gap-3 items-center justify-center text-[#797979] ">
-            <Link href="/login">
-              <button className="font-bold  cursor-pointer  py-2 px-4 border-2 border-[#15A1BF] p-2 rounded-lg">
-                Login
-              </button>
-            </Link>
-            <Link href="/register">
-              <button className="font-bold cursor-pointer py-2 border-2 px-4 border-[#15A1BF] p-2 rounded-lg">
-                Sign up
-              </button>
-            </Link>
-          </div>
-          {/* )} */}
+          ) : (
+            <div className="flex gap-3 items-center justify-center text-[#797979] ">
+              <Link href="/login">
+                <button className="font-bold  cursor-pointer  py-2 px-4 border-2 border-[#15A1BF] p-2 rounded-lg">
+                  Login
+                </button>
+              </Link>
+              <Link href="/register">
+                <button className="font-bold cursor-pointer py-2 border-2 px-4 border-[#15A1BF] p-2 rounded-lg">
+                  Sign up
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

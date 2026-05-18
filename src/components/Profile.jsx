@@ -1,8 +1,10 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import React from "react";
-import Image from "next/image";
+
 import Link from "next/link";
+import EditProfile from "./EditProfile";
+import Image from "next/image";
 
 const Profile = () => {
   const { data, isPending } = authClient.useSession();
@@ -69,12 +71,13 @@ const Profile = () => {
             </div>
 
             {/* Button */}
-            <Link href={"/profile/me"}>
+            {/* <Link href={"/profile/me"}>
               {" "}
               <button className="mt-4 btn bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-semibold px-6 py-2 rounded-lg hover:opacity-90 transition cursor-pointer">
                 Update Profile
               </button>
-            </Link>
+            </Link> */}
+            <EditProfile />
           </div>
         </div>
       </div>
