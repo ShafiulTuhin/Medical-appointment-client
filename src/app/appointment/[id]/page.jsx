@@ -1,5 +1,7 @@
+import BookingCard from "@/components/booking/BookingCard";
 import DeleteAppointment from "@/components/DeleteAppointment";
 import EditModal from "@/components/EditModal";
+
 import Image from "next/image";
 import React from "react";
 
@@ -116,12 +118,8 @@ const AppointmentDetailPage = async ({ params }) => {
               </p>
             </div>
 
-            {/* Button */}
-            <div className="mt-10 flex justify-center">
-              <button className="px-10 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-white text-lg font-semibold shadow-lg hover:scale-105 transition-all duration-300">
-                Confirm Appointment
-              </button>
-            </div>
+            {/* COnfirm booking */}
+            <BookingCard appointment={appointment} />
           </div>
         </div>
       </div>
