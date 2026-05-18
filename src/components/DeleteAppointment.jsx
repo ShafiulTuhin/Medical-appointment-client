@@ -33,7 +33,7 @@ const DeleteAppointment = ({ appointment }) => {
               <AlertDialog.Header>
                 <AlertDialog.Icon status="danger" />
                 <AlertDialog.Heading>
-                  Delete destination permanently?
+                  Delete appointment permanently?
                 </AlertDialog.Heading>
               </AlertDialog.Header>
               <AlertDialog.Body>

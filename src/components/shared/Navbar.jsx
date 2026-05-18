@@ -129,7 +129,7 @@ const Navbar = () => {
           </li>
 
           <li className={`${border}`}>
-            <NavLink href="/destination">All Appointments</NavLink>
+            <NavLink href="/appointment">All Appointments</NavLink>
           </li>
 
           <li className={`${border}`}>
