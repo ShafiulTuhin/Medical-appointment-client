@@ -108,6 +108,11 @@ const RegisterPage = () => {
               placeholder="Type here"
               {...register("password", {
                 required: "Password cannot be empty",
+                pattern: {
+                  value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
+                  message:
+                    "Name must contain at least 1 uppercase and 1 lowercase letter",
+                },
               })}
             />
             {errors.password && (
@@ -122,7 +127,7 @@ const RegisterPage = () => {
               {isPasswordShow ? <FaEye size={20} /> : <FaEyeSlash size={20} />}
             </span>
           </fieldset>
-          <button className="btn bg-cyan-500 py-2 text-white rounded-lg w-full   font-semibold cursor-pointer">
+          <button className="btn  bg-gradient-to-r from-cyan-500 to-emerald-500 py-2 text-white rounded-lg w-full   font-semibold cursor-pointer">
             Register
           </button>
         </form>
@@ -130,7 +135,7 @@ const RegisterPage = () => {
           {/* Continue with Google Button */}
           <button
             // onClick={handleGoogleLogin}
-            className="flex items-center justify-center gap-3 w-full border border-cyan-500 rounded-lg py-2 hover:bg-gray-100 transition cursor-pointer"
+            className="flex items-center justify-center gap-3 w-full border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500 rounded-lg py-2 hover:bg-gray-100 transition cursor-pointer"
           >
             <Image
               src="https://www.svgrepo.com/show/475656/google-color.svg"
@@ -147,7 +152,7 @@ const RegisterPage = () => {
             Already have an account?
             <span
               onClick={() => router.push("/login")}
-              className="text-cyan-500 cursor-pointer underline font-bold"
+              className="bg-gradient-to-r from-cyan-500 to-emerald-500 bg-clip-text text-transparent cursor-pointer underline font-bold"
             >
               Login
             </span>

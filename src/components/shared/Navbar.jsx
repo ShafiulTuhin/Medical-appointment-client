@@ -7,34 +7,34 @@ import NavLink from "./NavLink";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { CiUser } from "react-icons/ci";
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
-  //   const { data, isPending } = authClient.useSession();
+  const { data, isPending } = authClient.useSession();
 
-  //   const user = data?.user;
+  const user = data?.user;
 
   const [isOpen, setIsOpen] = useState(false);
   const border = "border-1 border-[#15A1BF] rounded-lg";
 
   const router = useRouter();
-  //   const handleLogout = async () => {
-  //     try {
-  //       await authClient.signOut({
-  //         fetchOptions: {
-  //           onSuccess: () => {
-  //             router.push("/");
-  //             toast.success("Logged out successfully", {
-  //               position: "top-center",
-  //               autoClose: 5000,
-  //             });
-  //           },
-  //         },
-  //       });
-  //     } catch (error) {
-  //       toast.error("Logout failed");
-  //     }
-  //   };
+  const handleLogout = async () => {
+    try {
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push("/");
+            toast.success("Logged out successfully", {
+              position: "top-center",
+              autoClose: 5000,
+            });
+          },
+        },
+      });
+    } catch (error) {
+      toast.error("Logout failed");
+    }
+  };
 
   return (
     <div className="">
@@ -51,12 +51,14 @@ const Navbar = () => {
           <li>
             <NavLink href="/appointment">All Appointments</NavLink>
           </li>
-          <li>
-            <NavLink href="/dashboard">Dashboard</NavLink>
-          </li>
+          {user && (
+            <li>
+              <NavLink href="/dashboard">Dashboard</NavLink>
+            </li>
+          )}
         </ul>
 
-        {/* {isPending ? (
+        {isPending ? (
           <span className="flex justify-center items-center">Loading...</span>
         ) : user ? (
           <div className="hidden md:flex items-center gap-4">
@@ -75,38 +77,38 @@ const Navbar = () => {
             />
             <Link
               href="/profile"
-              className=" bg-cyan-500 text-white font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
+              className=" border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500  font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
             >
               Profile
             </Link>
             <button
-            //   onClick={handleLogout}
-              className="bg-cyan-500 text-white font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
+              onClick={handleLogout}
+              className="border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500  font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
             >
               Logout
             </button>
           </div>
-        ) : ( */}
-        <div className="hidden md:flex items-center text-[#797979] gap-2">
-          <div className="flex items-center border-2 border-cyan-500 px-3 rounded-lg">
-            <CiUser size={20} />
-            <Link href="/login">
-              <button className="font-bold  hover:opacity-90 transition rounded-lg cursor-pointer p-2">
-                Login
+        ) : (
+          <div className="hidden md:flex items-center text-[#797979] gap-2">
+            <div className="flex items-center border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500 px-3 rounded-lg">
+              <CiUser size={20} />
+              <Link href="/login">
+                <button className="font-bold  hover:opacity-90 transition rounded-lg cursor-pointer p-2">
+                  Login
+                </button>
+              </Link>
+            </div>
+
+            <Link
+              href="/register"
+              className="border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500 px-3 rounded-lg"
+            >
+              <button className="font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2">
+                Sign up
               </button>
             </Link>
           </div>
-
-          <Link
-            href="/register"
-            className="border-2 border-cyan-500 px-3 rounded-lg"
-          >
-            <button className="font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2">
-              Sign up
-            </button>
-          </Link>
-        </div>
-        {/* )} */}
+        )}
 
         {/* Mobile Menu Button */}
         <button
