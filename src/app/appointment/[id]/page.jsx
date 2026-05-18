@@ -1,42 +1,4 @@
-// import React from "react";
-
-// const AppointmentDetailPage = async ({ params }) => {
-//   const { id } = await params;
-
-//   const res = await fetch(`http://localhost:5000/appointment/${id}`, {
-//     cache: "no-store",
-//   });
-
-//   const appointment = await res.json();
-//   const {
-//     _id,
-//     image,
-//     doctorName,
-//     hospital,
-//     specialty,
-//     availability,
-//     fee,
-//     location,
-//     experience,
-//     description,
-//   } = appointment;
-//   console.log(
-//     image,
-//     doctorName,
-//     hospital,
-//     specialty,
-//     availability,
-//     fee,
-//     location,
-//     experience,
-//     description,
-//   );
-
-//   return <div>{doctorName}</div>;
-// };
-
-// export default AppointmentDetailPage;
-
+import DeleteAppointment from "@/components/DeleteAppointment";
 import EditModal from "@/components/EditModal";
 import Image from "next/image";
 import React from "react";
@@ -66,6 +28,7 @@ const AppointmentDetailPage = async ({ params }) => {
     <div className="container mx-auto min-h-screen bg-gradient-to-br from-cyan-50 via-white to-emerald-50 py-10 px-4">
       <div className="flex justify-end gap-4 mb-5">
         <EditModal appointment={appointment} />
+        <DeleteAppointment appointment={appointment} />
       </div>
       <div className="max-w-5xl mx-auto">
         {/* Card */}
