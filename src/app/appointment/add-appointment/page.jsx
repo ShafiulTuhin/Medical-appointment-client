@@ -9,6 +9,7 @@ import {
 } from "@heroui/react";
 import { redirect } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AddAppointmentPage = () => {
   const submitForm = async (e) => {
@@ -24,8 +25,8 @@ const AddAppointmentPage = () => {
       },
       body: JSON.stringify(appointment),
     });
-    const data = await res.json();
-    console.log(data);
+    await res.json();
+    toast.success("Appointment set successfully");
 
     redirect("/appointment");
   };
