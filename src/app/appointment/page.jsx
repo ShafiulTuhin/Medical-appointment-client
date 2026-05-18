@@ -1,14 +1,26 @@
 import AppointmentCard from "@/components/AppointmentCard";
+import SearchAppointments from "@/components/SearchAppointment";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
 
-const AppointmentPage = async () => {
+const AppointmentPage = async ({ searchParams }) => {
+  const { search } = await searchParams;
+  console.log(search);
+
   const res = await fetch("http://localhost:5000/appointment", {
     cache: "no-store",
   });
   const appointments = await res.json();
-  console.log(Array.isArray(appointments[0].availability)); // should be true
+  let searchItems = appointments;
+
+  if (search) {
+    searchItems = searchItems.filter(
+      (appointment) =>
+        appointment.doctorName.toLowerCase().includes(search.toLowerCase()) ||
+        appointment.hospital.toLowerCase().includes(search.toLowerCase()),
+    );
+  }
   return (
     <div className="mt-5 w-full rounded-3xl border border-default-200 bg-white/70 backdrop-blur-md shadow-md p-4 md:p-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -25,7 +37,7 @@ const AppointmentPage = async () => {
         {/* Right Actions */}
         <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
           {/* Search Box */}
-          <div className="flex w-full sm:w-auto items-center">
+          {/* <div className="flex w-full sm:w-auto items-center">
             <input
               type="text"
               placeholder="Search doctor, patient..."
@@ -34,17 +46,18 @@ const AppointmentPage = async () => {
 
             <Button
               color="primary"
-              className="rounded-none rounded-r-lg px-5 font-medium py-[22px]"
+              className="rounded-none bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-r-lg px-5 font-medium py-[22px]"
             >
               Search
             </Button>
-          </div>
+          </div> */}
+          <SearchAppointments />
 
           {/* Add Appointment */}
           <Link href={"/appointment/add-appointment"}>
             <Button
               color="success"
-              className="w-full sm:w-auto rounded-xl px-5 py-[22px] font-medium"
+              className="w-full sm:w-auto rounded-xl px-5 py-[22px] font-medium bg-gradient-to-r from-cyan-500 to-emerald-500"
             >
               Add Appointment
             </Button>
@@ -52,7 +65,7 @@ const AppointmentPage = async () => {
         </div>
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-4">
-        {appointments.map((app) => (
+        {searchItems.map((app) => (
           <AppointmentCard key={app._id} appointment={app} />
         ))}
       </div>

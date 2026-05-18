@@ -27,7 +27,7 @@ const AppointmentCard = ({ appointment }) => {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover object-top transition-transform duration-300 hover:scale-110"
         />
-        <Chip className="absolute top-3 right-3 bg-[#15A1BF] text-white shadow-md">
+        <Chip className="absolute top-3 right-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white shadow-md">
           {specialty}
         </Chip>
       </div>
@@ -61,7 +61,7 @@ const AppointmentCard = ({ appointment }) => {
 
       {/* Button */}
       <Link href={`/appointment/${_id}`}>
-        <Button className="w-full mt-2 bg-[#15A1BF] text-white hover:opacity-90 transition-all">
+        <Button className="w-full mt-2 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white hover:opacity-90 transition-all">
           <FcViewDetails /> Details
         </Button>
       </Link>
