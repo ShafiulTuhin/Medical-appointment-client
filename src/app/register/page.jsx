@@ -1,7 +1,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
-// import { handleGoogleLogin } from "@/lib/data";
+import { handleGoogleLogin } from "@/lib/data";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -134,7 +134,7 @@ const RegisterPage = () => {
         <div className="text-center mt-4 lg:w-1/2 mx-auto">
           {/* Continue with Google Button */}
           <button
-            // onClick={handleGoogleLogin}
+            onClick={handleGoogleLogin}
             className="flex items-center justify-center gap-3 w-full border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500 rounded-lg py-2 hover:bg-gray-100 transition cursor-pointer"
           >
             <Image

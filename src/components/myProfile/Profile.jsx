@@ -70,13 +70,6 @@ const Profile = () => {
               </h3>
             </div>
 
-            {/* Button */}
-            {/* <Link href={"/profile/me"}>
-              {" "}
-              <button className="mt-4 btn bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-semibold px-6 py-2 rounded-lg hover:opacity-90 transition cursor-pointer">
-                Update Profile
-              </button>
-            </Link> */}
             <EditProfile />
           </div>
         </div>
