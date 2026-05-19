@@ -1,36 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Name : "Medi-Appointment"(Doctor Appointment Manager)
 
-## Getting Started
+## Live Link: https://medi-appointment-client.vercel.app
 
-First, run the development server:
+## 5 Bullet points:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+--> Real-time appointment tracking and booking management system for both patients and doctors.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+--> JWT-based API security and protected routes ensure authorized access to appointments, user information, and sensitive booking data.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+--> Interactive appointment management system with booking history and real-time status updates.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+--> Fast and responsive user interface built with modern technologies for smooth performance on all devices.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-->User authentication system with login/register, social provider sign-in, and secure user data storage in MongoDB.

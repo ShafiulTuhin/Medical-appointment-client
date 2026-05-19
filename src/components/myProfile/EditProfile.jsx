@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { BiEdit } from "react-icons/bi";
 import { FaSave } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const EditProfile = () => {
   const { data } = authClient.useSession();
@@ -35,6 +36,7 @@ const EditProfile = () => {
 
     if (res) {
       setOpen(false);
+      toast.success("Profile updated successfully!");
       router.push("/profile");
     }
   };
