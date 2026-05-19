@@ -11,13 +11,16 @@ const DeleteBooking = ({ booking }) => {
 
   const deleteBooking = async () => {
     const { data: tokenData } = await authClient.token();
-    const res = await fetch(`http://localhost:5000/booking/${booking._id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/booking/${booking._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
       },
-    });
+    );
     await res.json();
     toast.success(`Booking for ${booking.doctorName} successfully deleted`);
 

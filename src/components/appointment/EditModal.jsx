@@ -32,14 +32,17 @@ const EditModal = ({ appointment }) => {
     const formData = new FormData(e.currentTarget);
     const appointment = Object.fromEntries(formData.entries());
 
-    const res = await fetch(`http://localhost:5000/appointment/${_id}`, {
-      cache: "no-store",
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/appointment/${_id}`,
+      {
+        cache: "no-store",
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(appointment),
       },
-      body: JSON.stringify(appointment),
-    });
+    );
 
     await res.json();
     router.push("/appointment");

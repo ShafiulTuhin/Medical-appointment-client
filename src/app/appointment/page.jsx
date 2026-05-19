@@ -4,13 +4,21 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "Medi-Appointment | All Appointment",
+  description: "Get all doctors and appointment schedule here",
+};
+
 const AppointmentPage = async ({ searchParams }) => {
   const { search } = await searchParams;
   // console.log(search);
 
-  const res = await fetch("http://localhost:5000/appointment", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/appointment`,
+    {
+      cache: "no-store",
+    },
+  );
   const appointments = await res.json();
   let searchItems = appointments;
 

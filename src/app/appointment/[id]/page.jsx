@@ -1,6 +1,4 @@
 import BookingCard from "@/components/booking/BookingCard";
-import DeleteAppointment from "@/components/appointment/DeleteAppointment";
-import EditModal from "@/components/appointment/EditModal";
 
 import Image from "next/image";
 import React from "react";
@@ -10,6 +8,30 @@ import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
+// Metadata:
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/appointment/${id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  const appointment = await res.json();
+  console.log(appointment);
+
+  return {
+    title: `Dr. ${appointment.doctorName}`,
+    description: appointment.description,
+  };
+}
 const AppointmentDetailPage = async ({ params }) => {
   const { id } = await params;
   const { token } = await auth.api.getToken({
@@ -17,11 +39,14 @@ const AppointmentDetailPage = async ({ params }) => {
   });
   // console.log(token);
 
-  const res = await fetch(`http://localhost:5000/appointment/${id}`, {
-    headers: {
-      authorization: `Bearer ${token}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/appointment/${id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     },
-  });
+  );
 
   const appointment = await res.json();
 

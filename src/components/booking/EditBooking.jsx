@@ -32,7 +32,7 @@ const EditBooking = ({ booking }) => {
   const [appointmentData, setAppointmentData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/appointment")
+    fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/appointment`)
       .then((res) => res.json())
       .then((data) => {
         const matchedDoctor = data.find(
@@ -49,15 +49,18 @@ const EditBooking = ({ booking }) => {
     const booking = Object.fromEntries(formData.entries());
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch(`http://localhost:5000/booking/${_id}`, {
-      cache: "no-store",
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/booking/${_id}`,
+      {
+        cache: "no-store",
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
+        body: JSON.stringify(booking),
       },
-      body: JSON.stringify(booking),
-    });
+    );
 
     await res.json();
     // router.push("/dashboard");

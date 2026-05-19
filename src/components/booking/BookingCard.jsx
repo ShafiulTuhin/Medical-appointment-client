@@ -1,15 +1,6 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import {
-  Button,
-  DateField,
-  FieldError,
-  Input,
-  Label,
-  Modal,
-  Surface,
-  TextField,
-} from "@heroui/react";
+import { Button, DateField, Label, Modal, Surface } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -57,14 +48,17 @@ const BookingCard = ({ appointment }) => {
 
     // console.log(tokenData);
     const { data: tokenData } = await authClient.token();
-    const res = await fetch("http://localhost:5000/booking", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/booking`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
+        body: JSON.stringify(myBooking),
       },
-      body: JSON.stringify(myBooking),
-    });
+    );
 
     const bookingData = await res.json();
     // console.log(bookingData);

@@ -10,7 +10,7 @@ const DeleteAppointment = ({ appointment }) => {
 
   const deleteAppointment = async () => {
     const res = await fetch(
-      `http://localhost:5000/appointment/${appointment._id}`,
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/appointment/${appointment._id}`,
       {
         method: "DELETE",
         headers: {

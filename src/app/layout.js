@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Medi-Appointment",
+  title: "Medi-Appointment | Home",
   description: "A booking apps for doctor appointment",
 };
 

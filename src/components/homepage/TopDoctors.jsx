@@ -3,9 +3,12 @@ import Link from "next/link";
 import React from "react";
 
 const TopDoctors = async () => {
-  const res = await fetch("http://localhost:5000/top-doctors", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/top-doctors`,
+    {
+      cache: "no-store",
+    },
+  );
 
   const doctors = await res.json();
 

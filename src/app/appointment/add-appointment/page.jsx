@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -17,14 +18,19 @@ const AddAppointmentPage = () => {
     const formData = new FormData(e.currentTarget);
     const appointment = Object.fromEntries(formData.entries());
     // console.log(appointment);
+    const { data: tokenData } = await authClient.token();
 
-    const res = await fetch("http://localhost:5000/appointment", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/appointment`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
+        body: JSON.stringify(appointment),
       },
-      body: JSON.stringify(appointment),
-    });
+    );
     await res.json();
     toast.success("Appointment set successfully");
 
