@@ -24,11 +24,6 @@ const BookingCard = ({ appointment }) => {
       return;
     }
 
-    // Check date
-    if (!appointmentDate) {
-      toast.error("Please select a departure date");
-      return;
-    }
     const myBooking = {
       userEmail: user?.email,
       doctorName: appointment.doctorName,
@@ -39,6 +34,17 @@ const BookingCard = ({ appointment }) => {
       appointmentTime: selectedTime,
     };
     // console.log(myBooking);
+    const requiredFields = [
+      myBooking.appointmentDate,
+      myBooking.appointmentTime,
+      myBooking.phone,
+      myBooking.gender,
+    ];
+
+    if (requiredFields.some((field) => !field)) {
+      toast.error("Please fill all input fields");
+      return;
+    }
 
     const res = await fetch("http://localhost:5000/booking", {
       method: "POST",
@@ -144,14 +150,12 @@ const BookingCard = ({ appointment }) => {
         {/* PHONE */}
         <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
           <h2 className="text-sm font-semibold whitespace-nowrap">Phone:</h2>
-
           <input
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Phone Number"
-            className="w-full sm:w-[256px] px-4 py-2 rounded-xl border 
-        border-gray-300 focus:border-cyan-500 outline-none"
+            className="w-full sm:w-[256px] px-4 py-2 rounded-xl border border-gray-300"
           />
         </div>
       </div>

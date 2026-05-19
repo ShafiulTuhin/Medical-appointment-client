@@ -13,7 +13,7 @@ const TopDoctors = async () => {
     <section className="py-16 px-4 md:px-10 bg-gradient-to-b from-cyan-50 to-white">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-800 mb-12 text-center">
           🌟 Top Rated Doctors
         </h2>
 
@@ -64,7 +64,7 @@ const TopDoctors = async () => {
 
                 {/* Button */}
                 <Link href={`/appointment/${doc.id}`}>
-                  <button className="w-full mt-3 bg-cyan-500 text-white py-2 rounded-xl hover:bg-cyan-600 transition cursor-pointer">
+                  <button className="w-full mt-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white py-2 rounded-xl hover:bg-cyan-600 transition cursor-pointer">
                     Book Appointment
                   </button>
                 </Link>

@@ -1,5 +1,5 @@
-import AppointmentCard from "@/components/AppointmentCard";
-import SearchAppointments from "@/components/SearchAppointment";
+import AppointmentCard from "@/components/appointment/AppointmentCard";
+import SearchAppointments from "@/components/appointment/SearchAppointment";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
@@ -22,7 +22,7 @@ const AppointmentPage = async ({ searchParams }) => {
     );
   }
   return (
-    <div className="mt-5 w-full rounded-3xl border border-default-200 bg-white/70 backdrop-blur-md shadow-md p-4 md:p-6">
+    <div className="mt-5 container mx-auto rounded-3xl border border-default-200 bg-white/70 backdrop-blur-md shadow-md p-4 md:p-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         {/* Left Content */}
         <div>

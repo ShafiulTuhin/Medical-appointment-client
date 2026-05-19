@@ -169,12 +169,12 @@ const Navbar = () => {
           ) : (
             <div className="flex gap-3 items-center justify-center text-[#797979] ">
               <Link href="/login">
-                <button className="font-bold  cursor-pointer  py-2 px-4 border-2 border-[#15A1BF] p-2 rounded-lg">
+                <button className="font-bold  cursor-pointer  py-2 px-4  border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500  p-2 rounded-lg">
                   Login
                 </button>
               </Link>
               <Link href="/register">
-                <button className="font-bold cursor-pointer py-2 border-2 px-4 border-[#15A1BF] p-2 rounded-lg">
+                <button className="font-bold cursor-pointer py-2 px-4  border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500  p-2 rounded-lg">
                   Sign up
                 </button>
               </Link>

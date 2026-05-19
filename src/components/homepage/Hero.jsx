@@ -120,18 +120,17 @@ const Hero = () => {
               transition={{ duration: 1 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button
-                as={Link}
-                href="/appointment"
-                size="lg"
-                className="bg-[#15A1BF] text-white font-semibold px-8"
-              >
-                Book Appointment
-              </Button>
+              <Link href={"/appointment"}>
+                {" "}
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-lg text-white font-semibold px-8"
+                >
+                  Book Appointment
+                </Button>
+              </Link>
 
               <Button
-                as={Link}
-                href="/doctors"
                 size="lg"
                 variant="bordered"
                 className="border-white text-white font-semibold px-8"

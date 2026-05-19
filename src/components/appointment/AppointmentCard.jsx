@@ -33,6 +33,7 @@ const AppointmentCard = ({ appointment }) => {
       </div>
 
       {/* Doctor Name */}
+
       <motion.h2
         whileHover={{ x: 3 }}
         className="text-cyan-500 font-bold text-2xl my-3 flex gap-2 items-center"

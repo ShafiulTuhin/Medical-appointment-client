@@ -1,10 +1,13 @@
 import BookingCard from "@/components/booking/BookingCard";
-import DeleteAppointment from "@/components/DeleteAppointment";
-import EditModal from "@/components/EditModal";
+import DeleteAppointment from "@/components/appointment/DeleteAppointment";
+import EditModal from "@/components/appointment/EditModal";
 import { authClient } from "@/lib/auth-client";
 
 import Image from "next/image";
 import React from "react";
+import { FaBackward } from "react-icons/fa";
+import { Button } from "@heroui/react";
+import Link from "next/link";
 
 const AppointmentDetailPage = async ({ params }) => {
   // const { data } = authClient.useSession();
@@ -31,9 +34,19 @@ const AppointmentDetailPage = async ({ params }) => {
 
   return (
     <div className="container mx-auto min-h-screen bg-gradient-to-br from-cyan-50 via-white to-emerald-50 py-10 px-4">
-      <div className="flex justify-end gap-4 mb-5">
-        <EditModal appointment={appointment} />
-        <DeleteAppointment appointment={appointment} />
+      <div className="flex justify-between items-center">
+        <Link href={"/appointment"}>
+          {" "}
+          <Button variant="outline" className="rounded-lg">
+            <FaBackward />
+            Back
+          </Button>
+        </Link>
+
+        <div className="flex justify-end gap-4 mb-5">
+          <EditModal appointment={appointment} />
+          <DeleteAppointment appointment={appointment} />
+        </div>
       </div>
 
       <div className="max-w-5xl mx-auto">
@@ -89,7 +102,7 @@ const AppointmentDetailPage = async ({ params }) => {
 
               <div className="bg-emerald-50 rounded-2xl p-5 border border-emerald-100">
                 <h3 className="text-sm text-gray-500 mb-1">Consultation Fee</h3>
-                <p className="text-lg font-semibold text-gray-800">${fee}</p>
+                <p className="text-lg font-semibold text-gray-800">BDT-{fee}</p>
               </div>
             </div>
 
