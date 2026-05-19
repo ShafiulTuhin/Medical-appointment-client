@@ -5,26 +5,21 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-const DeleteAppointment = ({ appointment }) => {
+const DeleteBooking = ({ booking }) => {
   const router = useRouter();
 
-  const deleteAppointment = async () => {
-    const res = await fetch(
-      `http://localhost:5000/appointment/${appointment._id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-        },
+  const deleteBooking = async () => {
+    const res = await fetch(`http://localhost:5000/booking/${booking._id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
       },
-    );
+    });
     await res.json();
-    toast.success(
-      `${appointment.doctorName} has successfully deleted from appointment list`,
-    );
+    toast.success(`Booking for ${booking.doctorName} successfully deleted`);
 
     setTimeout(() => {
-      router.push("/appointment");
+      router.push("/dashboard");
     }, 1000);
   };
   return (
@@ -46,20 +41,16 @@ const DeleteAppointment = ({ appointment }) => {
               <AlertDialog.Body>
                 <p>
                   This will permanently delete appointment of
-                  <strong> {appointment.doctorName}</strong> and all of its
-                  data. This action cannot be undone.
+                  <strong> {booking.doctorName}</strong> and all of its data.
+                  This action cannot be undone.
                 </p>
               </AlertDialog.Body>
               <AlertDialog.Footer>
                 <Button slot="close" variant="tertiary">
                   Cancel
                 </Button>
-                <Button
-                  onClick={deleteAppointment}
-                  slot="close"
-                  variant="danger"
-                >
-                  Delete Appointment
+                <Button onClick={deleteBooking} slot="close" variant="danger">
+                  Delete Booking
                 </Button>
               </AlertDialog.Footer>
             </AlertDialog.Dialog>
@@ -70,4 +61,4 @@ const DeleteAppointment = ({ appointment }) => {
   );
 };
 
-export default DeleteAppointment;
+export default DeleteBooking;

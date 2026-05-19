@@ -1,20 +1,26 @@
-"use client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import EditBooking from "./EditBooking";
+import DeleteBooking from "./DeleteBooking";
 
-const MyBookings = ({
-  bookings = [
-    {
-      userEmail: "user@gmail.com",
-      doctorName: "Dr. Ayesha Rahman",
-      patientName: "Rahim Uddin",
-      gender: "Male",
-      phone: "01712345678",
-      appointmentDate: "2026-05-12",
-      appointmentTime: "10:30 AM",
-    },
-  ],
-  onEdit,
-  onDelete,
-}) => {
+const MyBookings = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(), // you need to pass the headers object.
+  });
+  const user = session?.user;
+  console.log(user);
+
+  const res = await fetch(
+    `http://localhost:5000/booking/${user.email}`,
+    // {
+    //   headers: {
+    //     authorization: `Bearer ${token}`,
+    //   },
+    // },
+  );
+  const bookings = await res.json();
+  console.log(bookings);
+
   return (
     <div className="w-full lg:w-10/12 mx-auto px-4 space-y-4 mt-10">
       <h2 className="text-2xl font-bold text-[#494949]">My Bookings</h2>
@@ -54,7 +60,7 @@ const MyBookings = ({
 
               <p>
                 <span className="font-semibold">Date:</span>{" "}
-                {booking.appointmentDate}
+                {new Date(booking.appointmentDate).toLocaleDateString()}
               </p>
 
               <p>
@@ -65,19 +71,22 @@ const MyBookings = ({
 
             {/* RIGHT SIDE - ACTION BUTTONS */}
             <div className="flex md:flex-col gap-3">
-              <button
-                onClick={() => onEdit?.(booking)}
+              {/* <button
+                // onClick={() => onEdit?.(booking)}
                 className="px-5 py-2 rounded-lg bg-cyan-500 text-white font-medium hover:scale-105 transition"
               >
                 Edit
-              </button>
+              </button> */}
+              <EditBooking booking={booking} />
 
+              {/* 
               <button
-                onClick={() => onDelete?.(booking)}
+                // onClick={() => onDelete?.(booking)}
                 className="px-5 py-2 rounded-lg bg-red-500 text-white font-medium hover:scale-105 transition"
               >
                 Delete
-              </button>
+              </button> */}
+              <DeleteBooking booking={booking} />
             </div>
           </div>
         ))

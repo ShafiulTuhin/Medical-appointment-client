@@ -1,11 +1,14 @@
 import BookingCard from "@/components/booking/BookingCard";
 import DeleteAppointment from "@/components/DeleteAppointment";
 import EditModal from "@/components/EditModal";
+import { authClient } from "@/lib/auth-client";
 
 import Image from "next/image";
 import React from "react";
 
 const AppointmentDetailPage = async ({ params }) => {
+  // const { data } = authClient.useSession();
+  // const user = data?.user;
   const { id } = await params;
 
   const res = await fetch(`http://localhost:5000/appointment/${id}`, {
@@ -32,6 +35,7 @@ const AppointmentDetailPage = async ({ params }) => {
         <EditModal appointment={appointment} />
         <DeleteAppointment appointment={appointment} />
       </div>
+
       <div className="max-w-5xl mx-auto">
         {/* Card */}
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-cyan-100">

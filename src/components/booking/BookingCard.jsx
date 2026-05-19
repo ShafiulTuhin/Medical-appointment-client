@@ -14,16 +14,6 @@ const BookingCard = ({ appointment }) => {
   const { data } = authClient.useSession();
   const user = data?.user;
 
-  const formatDate = (date) => {
-    if (!date) return null;
-
-    const year = date.year;
-    const month = String(date.month).padStart(2, "0");
-    const day = String(date.day).padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
-  };
-
   const router = useRouter();
 
   const handleBooking = async () => {
