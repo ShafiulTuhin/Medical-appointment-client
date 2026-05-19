@@ -6,7 +6,7 @@ import React from "react";
 
 const AppointmentPage = async ({ searchParams }) => {
   const { search } = await searchParams;
-  console.log(search);
+  // console.log(search);
 
   const res = await fetch("http://localhost:5000/appointment", {
     cache: "no-store",

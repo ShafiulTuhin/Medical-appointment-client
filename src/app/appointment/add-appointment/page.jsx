@@ -16,7 +16,7 @@ const AddAppointmentPage = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const appointment = Object.fromEntries(formData.entries());
-    console.log(appointment);
+    // console.log(appointment);
 
     const res = await fetch("http://localhost:5000/appointment", {
       method: "POST",

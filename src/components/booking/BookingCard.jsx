@@ -38,7 +38,7 @@ const BookingCard = ({ appointment }) => {
       appointmentDate: new Date(appointmentDate),
       appointmentTime: selectedTime,
     };
-    console.log(myBooking);
+    // console.log(myBooking);
 
     const res = await fetch("http://localhost:5000/booking", {
       method: "POST",
@@ -49,7 +49,7 @@ const BookingCard = ({ appointment }) => {
     });
 
     const bookingData = await res.json();
-    console.log(bookingData);
+    // console.log(bookingData);
 
     if (bookingData) {
       toast.success(

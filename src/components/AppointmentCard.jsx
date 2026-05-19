@@ -9,7 +9,7 @@ import { FcViewDetails } from "react-icons/fc";
 
 const AppointmentCard = ({ appointment }) => {
   const { _id, doctorName, specialty, availability, image } = appointment;
-  console.log(typeof availability);
+  // console.log(typeof availability);
 
   return (
     <motion.div

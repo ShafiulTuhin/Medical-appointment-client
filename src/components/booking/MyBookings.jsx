@@ -8,7 +8,7 @@ const MyBookings = async () => {
     headers: await headers(), // you need to pass the headers object.
   });
   const user = session?.user;
-  console.log(user);
+  // console.log(user);
 
   const res = await fetch(
     `http://localhost:5000/booking/${user.email}`,
@@ -19,7 +19,7 @@ const MyBookings = async () => {
     // },
   );
   const bookings = await res.json();
-  console.log(bookings);
+  // console.log(bookings);
 
   return (
     <div className="w-full lg:w-10/12 mx-auto px-4 space-y-4 mt-10">
