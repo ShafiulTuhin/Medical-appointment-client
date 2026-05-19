@@ -59,7 +59,7 @@ const AppointmentPage = async ({ searchParams }) => {
               color="success"
               className="w-full sm:w-auto rounded-xl px-5 py-[22px] font-medium bg-gradient-to-r from-cyan-500 to-emerald-500"
             >
-              Add Appointment
+              Add Doctor
             </Button>
           </Link>
         </div>

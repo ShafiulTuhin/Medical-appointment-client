@@ -1,21 +1,26 @@
 import BookingCard from "@/components/booking/BookingCard";
 import DeleteAppointment from "@/components/appointment/DeleteAppointment";
 import EditModal from "@/components/appointment/EditModal";
-import { authClient } from "@/lib/auth-client";
 
 import Image from "next/image";
 import React from "react";
 import { FaBackward } from "react-icons/fa";
 import { Button } from "@heroui/react";
 import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const AppointmentDetailPage = async ({ params }) => {
-  // const { data } = authClient.useSession();
-  // const user = data?.user;
   const { id } = await params;
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  // console.log(token);
 
   const res = await fetch(`http://localhost:5000/appointment/${id}`, {
-    cache: "no-store",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
   });
 
   const appointment = await res.json();
@@ -43,10 +48,10 @@ const AppointmentDetailPage = async ({ params }) => {
           </Button>
         </Link>
 
-        <div className="flex justify-end gap-4 mb-5">
+        {/* <div className="flex justify-end gap-4 mb-5">
           <EditModal appointment={appointment} />
           <DeleteAppointment appointment={appointment} />
-        </div>
+        </div> */}
       </div>
 
       <div className="max-w-5xl mx-auto">

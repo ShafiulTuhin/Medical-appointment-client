@@ -101,13 +101,18 @@ const RegisterPage = () => {
             )}
           </fieldset>
           <fieldset className="fieldset relative">
-            <legend className="fieldset-legend">Password</legend>
+            {" "}
+            <legend className="fieldset-legend">Password</legend>{" "}
             <input
               type={isPasswordShow ? "text" : "password"}
               className="input bg-slate-100 w-full"
               placeholder="Type here"
               {...register("password", {
                 required: "Password cannot be empty",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
                 pattern: {
                   value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
                   message:
@@ -119,7 +124,7 @@ const RegisterPage = () => {
               <p className="text-red-500 font-semibold">
                 {errors.password.message}
               </p>
-            )}
+            )}{" "}
             <span
               onClick={() => setIsPasswordShow(!isPasswordShow)}
               className="absolute right-2 top-3 cursor-pointer"

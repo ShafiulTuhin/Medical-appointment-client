@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -46,12 +47,14 @@ const EditBooking = ({ booking }) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const booking = Object.fromEntries(formData.entries());
+    const { data: tokenData } = await authClient.token();
 
     const res = await fetch(`http://localhost:5000/booking/${_id}`, {
       cache: "no-store",
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(booking),
     });
@@ -86,10 +89,10 @@ const EditBooking = ({ booking }) => {
                       <TextField name="doctorName" defaultValue={doctorName}>
                         <Label>Doctor Name</Label>
                         <Input
-                          placeholder="Dr. Ayesha Rahman"
                           className="rounded-2xl"
+                          value={doctorName}
+                          readOnly
                         />
-                        <FieldError />
                       </TextField>
                     </div>
 
@@ -148,7 +151,7 @@ const EditBooking = ({ booking }) => {
                     </TextField>
                   </div>
                   <div className="space-y-3">
-                    <Label>Appointment Time</Label>
+                    <Label className="mb-3">Appointment Time</Label>
 
                     <div className="flex flex-wrap gap-2">
                       {appointmentData?.availability?.map((time, index) => (
@@ -156,7 +159,7 @@ const EditBooking = ({ booking }) => {
                           type="button"
                           key={index}
                           onClick={() => setSelectedTime(time)}
-                          className={`px-4 py-2 rounded-xl border text-sm transition cursor-pointer
+                          className={`px-4 py-2 rounded-xl border text-sm transition cursor-pointer 
         ${
           selectedTime === time
             ? "bg-cyan-500 text-white border-cyan-500"

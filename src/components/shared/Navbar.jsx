@@ -51,11 +51,10 @@ const Navbar = () => {
           <li>
             <NavLink href="/appointment">All Appointments</NavLink>
           </li>
-          {user && (
-            <li>
-              <NavLink href="/dashboard">Dashboard</NavLink>
-            </li>
-          )}
+
+          <li>
+            <NavLink href="/dashboard">Dashboard</NavLink>
+          </li>
         </ul>
 
         {isPending ? (
@@ -133,11 +132,10 @@ const Navbar = () => {
           <li className={`${border}`}>
             <NavLink href="/appointment">All Appointments</NavLink>
           </li>
-          {user && (
-            <li className={`${border}`}>
-              <NavLink href="/dashboard">Dashboard</NavLink>
-            </li>
-          )}
+
+          <li className={`${border}`}>
+            <NavLink href="/dashboard">Dashboard</NavLink>
+          </li>
         </ul>
 
         <div className="">
