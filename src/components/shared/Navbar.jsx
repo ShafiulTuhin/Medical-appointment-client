@@ -74,12 +74,7 @@ const Navbar = () => {
               height={40}
               className="rounded-full"
             />
-            <Link
-              href="/profile"
-              className=" border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500  font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
-            >
-              Profile
-            </Link>
+
             <button
               onClick={handleLogout}
               className="border-4 border-t-cyan-500 border-r-emerald-500 border-b-cyan-500 border-l-emerald-500  font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
@@ -148,13 +143,6 @@ const Navbar = () => {
                   <p className="text-green-600 font-semibold">Welcome!</p>
                   <p className="font-bold">{user?.name}</p>
                 </div>
-
-                <Link
-                  href="/profile"
-                  className=" bg-cyan-500 text-white font-bold hover:opacity-90 transition rounded-lg cursor-pointer px-4 py-2"
-                >
-                  Profile
-                </Link>
               </div>
 
               <button

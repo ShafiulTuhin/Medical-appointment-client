@@ -37,7 +37,7 @@ const EditProfile = () => {
     if (res) {
       setOpen(false);
       toast.success("Profile updated successfully!");
-      router.push("/profile");
+      router.push("/dashboard/profile");
     }
   };
   return (
@@ -143,7 +143,7 @@ const EditProfile = () => {
                   />
 
                   <div className="flex gap-3 pt-3">
-                    <Link href="/profile" className="flex-1">
+                    <Link href="/dashboard/profile" className="flex-1">
                       <button
                         onClick={() => setOpen(false)}
                         className="w-full btn bg-gray-200 py-2 rounded-lg"
