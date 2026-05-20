@@ -41,9 +41,13 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-4">
         {/* Desktop Menu */}
 
-        <Link href={"/"}>
+        <Link href={"/"} className="flex items-center">
           <Image src={LogoImg} alt="Logo" width={80} height={80} />
+          <h2 className="bg-gradient-to-r from-cyan-500 to-emerald-500 bg-clip-text text-transparent font-bold -mt-3">
+            Medi Appointment
+          </h2>
         </Link>
+
         <ul className="hidden md:flex gap-6 items-center font-bold text-[#797979]">
           <li>
             <NavLink href="/">Home</NavLink>
