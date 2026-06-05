@@ -18,11 +18,9 @@ Fast and seamless user experience powered by modern web technologies.
 🛠️ Technologies Used
 Frontend
 React.js
-React Router
 Tailwind CSS
 DaisyUI
-Axios
-Firebase Authentication
+Better-auth Authentication
 Backend
 Node.js
 Express.js
@@ -30,8 +28,8 @@ JWT Authentication
 Database
 MongoDB
 Deployment
-Vercel (Client)
-Render / Railway (Server)
+Vercel (Client & server)
+
 📷 Screenshots
 [Homepage](https://i.ibb.co.com/5W4CBSBy/Homepage.png)
 [Dashboard](https://i.ibb.co.com/0RX7ZhYb/Dashboard.png)
@@ -46,22 +44,14 @@ Protected Routes
 Secure API Access
 🚀 Installation & Setup
 Client
-git clone <client-repository-url>
+git clone [Client](https://github.com/ShafiulTuhin/Medical-appointment-client)
 cd medi-appointment-client
 npm install
 npm run dev
 Server
-git clone <server-repository-url>
+git clone [Server](https://github.com/ShafiulTuhin/Medical-appointment-server)
 cd medi-appointment-server
 npm install
 npm start
-🌐 Environment Variables
-VITE_API_URL=
-VITE_FIREBASE_API_KEY=
-VITE_FIREBASE_AUTH_DOMAIN=
-JWT_SECRET=
-MONGODB_URI=
-🔗 Relevant Links
-Live Website: https://medi-appointment-client.vercel.app
-Client Repository: Your Client Repo Link
-Server Repository: Your Server Repo Link
+
+
